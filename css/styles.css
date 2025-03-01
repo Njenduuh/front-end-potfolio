@@ -168,6 +168,53 @@
     overflow: hidden;
   }
   
+
+/* Add these new styles */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hero-text, .hero-image {
+  flex: 1;
+}
+
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Media queries for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-text {
+    margin-bottom: 2rem;
+  }
+  
+  .hero-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-img {
+    width: 90%;
+    max-height: 50vh; /* Prevents image from being too tall on mobile */
+    object-fit: contain; /* Ensures the entire image is visible */
+  }
+}
+  
   .hero::before {
     content: '';
     position: absolute;
