@@ -75,24 +75,34 @@ const observeElements = () => {
     });
 };
 
-// Contact Form Handling
 const handleFormSubmit = async (e) => {
     e.preventDefault();
     const submitButton = contactForm.querySelector('button[type="submit"]');
-    const formData = new FormData(contactForm);
     
     try {
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
 
-        // Simulate form submission (replace with your actual endpoint)
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        const formData = new FormData(contactForm);
         
-        // Show success message
-        showFormMessage('Message sent successfully!', 'success');
-        contactForm.reset();
+        // Replace 'YOUR_FORM_ID' with the actual ID from Formspree
+        const response = await fetch('https://formspree.io/f/mqapdogl', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            showFormMessage('Message sent successfully!', 'success');
+            contactForm.reset();
+        } else {
+            const data = await response.json();
+            throw new Error(data.error || 'Form submission failed');
+        }
     } catch (error) {
-        // Show error message
+        console.error('Form error:', error);
         showFormMessage('Failed to send message. Please try again.', 'error');
     } finally {
         submitButton.disabled = false;
