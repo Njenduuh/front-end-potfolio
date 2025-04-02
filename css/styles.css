@@ -144,6 +144,27 @@
     width: 100%;
   }
   
+  /* Download Message */
+.download-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-md);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.download-message.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
   /* Theme Toggle */
   .theme-toggle {
     background: none;
@@ -157,6 +178,27 @@
   .theme-toggle:hover {
     transform: rotate(15deg);
   }
+
+  /* Language Toggle */
+.lang-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: inherit;
+  font-weight: 500;
+  transition: var(--transition);
+  margin-left: 1rem;
+}
+
+.lang-toggle:hover {
+  color: var(--primary-color);
+}
+
+.lang-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
   
   /* Hero Section */
   .hero {
